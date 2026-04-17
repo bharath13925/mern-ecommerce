@@ -45,4 +45,4 @@ const authorize = (...roles) => { // here roles means in productRoutes we sent a
     };
 };
 
-module.exports = { protect, authorize };
+module.exports = { protect, authorize };    

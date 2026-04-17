@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes=require("./routes/productRoutes")
+const cartRoutes=require('./routes/cartRoutes')
 require("dotenv").config();
 
 app.use(cors());
@@ -20,5 +21,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products",productRoutes)
+app.use("/api/cart",cartRoutes)
 
 app.listen(5000, () => console.log("server runs on port 5000"));

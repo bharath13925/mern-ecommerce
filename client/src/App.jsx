@@ -6,6 +6,8 @@ import Login from './components/login'
 import Addproduct from './components/Addproduct'
 import Home from './components/Home'
 import Cart from './components/Cart'
+import Orders from './components/Orders'
+import AdminDashboard from './components/AdminDashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 
 export default function App() {
@@ -16,11 +18,10 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* here the protected route giev permission to proceed then navigate to the "add-product" route  */}
         <Route
           path="/add-product"
           element={
-            <ProtectedRoute> 
+            <ProtectedRoute>
               <Addproduct />
             </ProtectedRoute>
           }
@@ -30,6 +31,22 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <Orders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />

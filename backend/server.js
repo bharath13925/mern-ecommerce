@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
-const productRoutes=require("./routes/productRoutes")
-const cartRoutes=require('./routes/cartRoutes')
+const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 require("dotenv").config();
 
 app.use(cors());
@@ -12,15 +13,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("DB connected"))
-    .catch(err => console.log(err));
+  .then(() => console.log("DB connected"))
+  .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
-    res.json({ message: "server is running" });
+  res.json({ message: "server is running" });
 });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/products",productRoutes)
-app.use("/api/cart",cartRoutes)
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/orders", orderRoutes);
 
 app.listen(5000, () => console.log("server runs on port 5000"));

@@ -9,6 +9,7 @@ export default function Navbar() {
   function handleLogout() {
     localStorage.removeItem("token")
     localStorage.removeItem("role")
+    localStorage.removeItem("userName")
     navigate("/login")
   }
 
@@ -25,7 +26,7 @@ export default function Navbar() {
         🛍️ ShopZone
       </Link>
 
-      <div className="d-flex align-items-center gap-3 ms-auto">
+      <div className="d-flex align-items-center gap-2 ms-auto flex-wrap">
         {token ? (
           <>
             <span
@@ -39,15 +40,25 @@ export default function Navbar() {
             </span>
 
             {role === "admin" && (
-              <Link className="btn btn-sm btn-outline-warning fw-semibold" to="/add-product">
-                + Add Product
-              </Link>
+              <>
+                <Link className="btn btn-sm btn-outline-warning fw-semibold" to="/add-product">
+                  + Add Product
+                </Link>
+                <Link className="btn btn-sm btn-outline-light fw-semibold" to="/admin/dashboard">
+                  📊 Dashboard
+                </Link>
+              </>
             )}
 
             {role === "user" && (
-              <Link className="btn btn-sm btn-outline-info fw-semibold" to="/cart">
-                🛒 My Cart
-              </Link>
+              <>
+                <Link className="btn btn-sm btn-outline-info fw-semibold" to="/cart">
+                  🛒 Cart
+                </Link>
+                <Link className="btn btn-sm btn-outline-light fw-semibold" to="/orders">
+                  📦 Orders
+                </Link>
+              </>
             )}
 
             <button className="btn btn-sm btn-danger fw-semibold" onClick={handleLogout}>

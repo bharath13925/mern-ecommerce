@@ -11,7 +11,7 @@ const protect = (req, res, next) => {
 
         const token = authHeader.split(" ")[1];
 
-        // Verify token
+        // Verify token 
         const decoded = jwt.verify(token, process.env.JWT_SECRET); // here after verify the decoded variable has "id and role while we craete token we use that ones only after verify the token you may get the role and user id that can be passed to below authorize function"
 
         // Attach user to request just like normal attcahment not any miracle
